@@ -166,14 +166,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
   font-family: var(--serif);
   font-size: 1.625rem;
   letter-spacing: -0.02em;
-  color: #000;
+  color: #18222f;
   margin-right: auto;
   transition: color .4s;
 }
-.logo-mark { width: 26px; height: 26px; }
-.header.on-dark .logo { color: #fff; }
-.header.on-dark .logo-mark path { stroke: #0b2a26; }
-.header.on-dark .logo-mark circle:last-child { fill: #0b2a26; }
+.logo-lockup { display: inline-flex; align-items: center; }
+.logo-img { display: block; height: 48px; width: auto; }
+.logo-mark { display: block; width: 100%; height: auto; }
 
 .nav > ul {
   display: flex;
@@ -848,14 +847,14 @@ html:not(.js) .nav-link:hover { background: rgb(255 255 255 / .85); }
 .ph-highlights li:nth-child(3) { animation-delay: 1.06s; }
 
 /* ============ PRELOADER (components/Preloader.tsx) ============
-   About 7.6s, transform and opacity only (smooth on phones). Shown on every full page load:
-   0.25–3.75s products, one at a time: each word slides up, holds long enough to read, slides out
-              just as the next arrives (0.9s each, every 0.65s)
-   3.75–5.1s  "One platform. / Your brand."
-   5.1–6.1s   the Elyra mark and wordmark
-   6.15s      the type lifts away; six shutters rise one after another onto the page;
-              6.41s the page's own entrances resume underneath
-   7.6s       the script removes .pl-on and the preloader is gone */
+   About 12s, transform and opacity only (smooth on phones). Shown on every full page load:
+   0.4–5.9s   products, one at a time: each word slides up, holds long enough to read, slides out
+              just as the next arrives (1.42s each, every 1.03s)
+   5.9–8s     "One platform. / Your brand."
+   8–9.6s     the Elyra logo
+   9.7s       the type lifts away; six shutters rise one after another onto the page;
+              10.12s the page's own entrances resume underneath
+   12s        the script removes .pl-on and the preloader is gone */
 @property --pl-n { syntax: "<integer>"; inherits: false; initial-value: 0; }
 .preloader { display: none; }
 .pl-on, .pl-on body { overflow: hidden; }
@@ -881,14 +880,14 @@ html:not(.js) .nav-link:hover { background: rgb(255 255 255 / .85); }
   inset: 0 0 -40px;
   display: flex;
   background: var(--pl-bg);
-  animation: pl-unback 0s linear 6.225s forwards;
+  animation: pl-unback 0s linear 9.829s forwards;
 }
 .pl-shutters span {
   flex: 1;
   margin-right: -1px;
   background: var(--pl-bg);
   border-radius: 0 0 28px 28px;
-  animation: pl-shutter 1.064s var(--pl-cut) calc(6.225s + var(--i) * 0.075s) forwards;
+  animation: pl-shutter 1.68s var(--pl-cut) calc(9.829s + var(--i) * 0.119s) forwards;
   will-change: transform;
 }
 
@@ -897,7 +896,7 @@ html:not(.js) .nav-link:hover { background: rgb(255 255 255 / .85); }
   position: absolute;
   inset: 0;
   overflow: hidden;
-  animation: pl-ui-out 0.689s var(--pl-cut) 6.036s forwards;
+  animation: pl-ui-out 1.088s var(--pl-cut) 9.53s forwards;
 }
 /* soft mint light drifting behind the type (a gradient, so no filter cost) */
 .pl-glow {
@@ -909,7 +908,7 @@ html:not(.js) .nav-link:hover { background: rgb(255 255 255 / .85); }
   margin: -45vmax 0 0 -45vmax;
   border-radius: 50%;
   background: radial-gradient(closest-side, rgb(var(--mint) / .22), rgb(var(--mint) / .06) 55%, transparent);
-  animation: pl-drift 6.4s ease-in-out both;
+  animation: pl-drift 10.105s ease-in-out both;
   will-change: transform;
 }
 
@@ -925,7 +924,7 @@ html:not(.js) .nav-link:hover { background: rgb(255 255 255 / .85); }
   letter-spacing: .08em;
   text-transform: uppercase;
   color: rgb(255 255 255 / .62);
-  animation: fade-up 1s var(--pl-in) backwards;
+  animation: fade-up 1.579s var(--pl-in) backwards;
 }
 .pl-corners > :nth-child(2) { justify-self: end; }
 .pl-loading { grid-row: 3; align-self: end; }
@@ -941,7 +940,7 @@ html:not(.js) .nav-link:hover { background: rgb(255 255 255 / .85); }
   color: #fff;
   font-variant-numeric: tabular-nums;
   counter-reset: pl var(--pl-n);
-  animation: pl-count 5.725s cubic-bezier(.45, 0, .3, 1) 0.189s forwards;
+  animation: pl-count 9.04s cubic-bezier(.45, 0, .3, 1) 0.299s forwards;
 }
 .pl-count::after { content: counter(pl) "%"; }
 .pl-line { grid-row: 4; grid-column: 1 / -1; height: 1px; margin-top: .9rem; background: rgb(255 255 255 / .14); position: relative; overflow: hidden; }
@@ -951,7 +950,7 @@ html:not(.js) .nav-link:hover { background: rgb(255 255 255 / .85); }
   inset: 0;
   background: rgb(var(--mint));
   transform-origin: left;
-  animation: pl-fill 5.725s cubic-bezier(.45, 0, .3, 1) 0.189s both;
+  animation: pl-fill 9.04s cubic-bezier(.45, 0, .3, 1) 0.299s both;
 }
 
 /* the centre: three beats stacked in one spot */
@@ -972,22 +971,21 @@ html:not(.js) .nav-link:hover { background: rgb(255 255 255 / .85); }
 .pl-words span {
   grid-area: 1 / 1;
   translate: 0 110%;
-  animation: pl-flash 0.9s linear calc(0.25s + var(--i) * 0.65s) forwards;
+  animation: pl-flash 1.421s linear calc(0.395s + var(--i) * 1.026s) forwards;
 }
 .pl-words span:last-child { color: rgb(var(--mint)); }
 
 /* beats 2 and 3: lines rise out of their masks, then leave together */
 .pl-pitch, .pl-brand { font-family: var(--serif); letter-spacing: -0.035em; line-height: 1; }
-.pl-pitch { display: grid; font-size: clamp(2.8rem, 8vw, 6.5rem); animation: pl-beat-out 0.564s var(--pl-cut) 4.789s forwards; }
+.pl-pitch { display: grid; font-size: clamp(2.8rem, 8vw, 6.5rem); animation: pl-beat-out 0.89s var(--pl-cut) 7.561s forwards; }
 .pl-pitch em { font-style: italic; color: rgb(var(--mint)); }
 .pl-l { display: block; overflow: hidden; padding: 0 .04em .1em; }
-.pl-l > * { display: block; translate: 0 135%; animation: pl-line-in 1s var(--pl-in) forwards; }
-.pl-pitch .pl-l > * { animation-delay: 3.725s; }
-.pl-pitch .pl-l + .pl-l > * { animation-delay: 3.875s; }
+.pl-l > * { display: block; translate: 0 135%; animation: pl-line-in 1.579s var(--pl-in) forwards; }
+.pl-pitch .pl-l > * { animation-delay: 5.881s; }
+.pl-pitch .pl-l + .pl-l > * { animation-delay: 6.119s; }
 .pl-brand { display: flex; align-items: center; gap: clamp(12px, 1.6vw, 20px); font-size: clamp(3.4rem, 9vw, 7rem); }
-.pl-brand .pl-l > * { animation-delay: 5.225s; }
-.pl-mark { width: .72em; color: #fff; scale: 0; animation: pl-pop 0.875s cubic-bezier(.34, 1.45, .64, 1) 5.125s forwards; }
-.pl-mark .logo-mark { width: 100%; height: auto; }
+.pl-brand .pl-l > * { animation-delay: 8.25s; }
+.pl-brand .logo-img { height: clamp(96px, 16vw, 168px); }
 
 @keyframes pl-shutter { to { transform: translateY(-101%); } }
 @keyframes pl-unback { to { background: transparent; } }
@@ -1007,7 +1005,6 @@ html:not(.js) .nav-link:hover { background: rgb(255 255 255 / .85); }
 }
 @keyframes pl-line-in { to { translate: 0 0; } }
 @keyframes pl-beat-out { to { opacity: 0; transform: translateY(-.35em); } }
-@keyframes pl-pop { to { scale: 1; } }
 @media (max-width: 640px) {
   .pl-shutters span { border-radius: 0 0 18px 18px; }
   .pl-corners > :nth-child(2) { max-width: 9rem; text-align: right; }
@@ -2118,7 +2115,7 @@ main:focus { outline: none; }
 .f-body { background: var(--f-bg); color: var(--f-text); padding: 3rem 0 2rem; font-size: .75rem; line-height: 1.34; letter-spacing: -0.01em; }
 .f-top { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem 2.5rem; align-items: center; padding-bottom: 1.6rem; border-bottom: 1px solid var(--f-line); }
 .f-brand { display: inline-flex; align-items: center; gap: .3em; font-family: var(--serif); font-size: 1.6rem; letter-spacing: -0.03em; color: var(--f-ink); }
-.f-brand .logo-mark { width: .85em; height: .85em; }
+.f-brand .logo-img { height: 72px; }
 .f-tagline { color: var(--f-muted); max-width: 30rem; }
 .f-contact { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
 .f-contact a { color: var(--f-ink); font-weight: 500; }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { apis, company, services, solutions, type NavLink } from "@/lib/site";
-import { Chev, LogoMark } from "./Brand";
+import { Chev, Logo } from "./Brand";
 import { Photo } from "./Photo";
 
 const byGroup = (g: string): NavLink[] =>
@@ -55,7 +55,7 @@ export function Footer() {
       <div className="f-body">
         <div className="f-top container">
           <Link href="/" className="f-brand" aria-label={`${company.name} home`}>
-            <LogoMark inner="#f5f5f7" /><span>elyra</span>
+            <Logo />
           </Link>
           <p className="f-tagline">White-label and custom travel booking software, supplier integrations and apps, for travel businesses that want to own their brand.</p>
           {contact.length > 0 && (

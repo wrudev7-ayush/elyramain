@@ -1,11 +1,17 @@
-/** The Elyra mark: a disc with a flight path. `inner` colours the path and the dot. */
-export function LogoMark({ inner = "var(--bg)" }: { inner?: string }) {
+/* Elyra Technologies logo, used exactly as supplied (public/assets/brand; untouched file in elyra-logo-original.webp). */
+const BRAND = "/assets/brand";
+
+/** Just the mark, cropped from the logo. */
+export function LogoMark() {
+  return <img className="logo-mark" src={`${BRAND}/elyra-mark.webp`} width={657} height={652} alt="" />;
+}
+
+/** The full logo: mark, ELYRA and TECHNOLOGIES. */
+export function Logo() {
   return (
-    <svg className="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
-      <circle cx="16" cy="16" r="14" fill="currentColor" />
-      <path d="M4 18 Q16 8 28 14" stroke={inner} strokeWidth="2.4" fill="none" strokeLinecap="round" />
-      <circle cx="24" cy="12.6" r="2.4" fill={inner} />
-    </svg>
+    <span className="logo-lockup">
+      <img className="logo-img" src={`${BRAND}/elyra-logo.webp`} width={1867} height={652} alt="Elyra Technologies" />
+    </span>
   );
 }
 

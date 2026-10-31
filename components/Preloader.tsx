@@ -1,11 +1,11 @@
-import { LogoMark } from "./Brand";
+import { Logo } from "./Brand";
 
 /**
- * Page-load preloader, about 7.6s of kinetic type (paced so every word can be read), then a shutter reveal:
- *   0.25–3.75s the products, one at a time, in huge type: Flights, Hotels, Holidays, Transfers, Payments
- *   3.75–5.1s  "One platform. Your brand."
- *   5.1–6.1s   the Elyra mark and wordmark
- *   6.15–7.6s  the screen splits into six shutters that lift one after another onto the page
+ * Page-load preloader, about 12s of kinetic type (paced so every word can be read), then a shutter reveal:
+ *   0.4–5.9s   the products, one at a time, in huge type: Flights, Hotels, Holidays, Transfers, Payments
+ *   5.9–8s     "One platform. Your brand."
+ *   8–9.6s     the Elyra logo
+ *   9.7–12s    the screen splits into six shutters that lift one after another onto the page
  * Corners carry the brand, a label, "Loading" and a 0–100 counter over a filling hairline.
  * Everything moves with transform and opacity only, so it stays smooth on phones.
  *
@@ -15,8 +15,8 @@ import { LogoMark } from "./Brand";
  * entrances paused until the shutters lift (resuming, not delaying, so nothing jumps).
  * Without that script it never shows. The timings match the keyframes in globals.css ("PRELOADER").
  */
-const OPEN_MS = 6410;
-const DONE_MS = 7600;
+const OPEN_MS = 10121;
+const DONE_MS = 12000;
 
 const products = ["Flights", "Hotels", "Holidays", "Transfers", "Payments"];
 const SHUTTERS = 6;
@@ -49,8 +49,7 @@ export function Preloader() {
             <span className="pl-l"><em>Your brand.</em></span>
           </p>
           <p className="pl-brand">
-            <span className="pl-mark"><LogoMark inner="#06201d" /></span>
-            <span className="pl-l"><span>elyra</span></span>
+            <span className="pl-l"><span><Logo /></span></span>
           </p>
         </div>
       </div>
